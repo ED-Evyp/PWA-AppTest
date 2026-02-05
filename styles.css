@@ -5,24 +5,62 @@
 }
 
 body {
-    background-color: rgb(236, 103, 7);
     font-family: Arial, sans-serif;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
 
-.container {
-    text-align: center;
+.header {
+    background-color: rgb(236, 103, 7);
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 .logo {
-    max-width: 200px;
-    margin-bottom: 20px;
+    max-width: 120px;
+    margin-bottom: 15px;
 }
 
 h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.content {
+    background-color: white;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.nav-button {
+    width: 80%;
+    max-width: 300px;
+    padding: 18px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
     color: white;
-    font-size: 2rem;
+    background-color: rgb(236, 103, 7);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: rgb(206, 83, 0);
+}
+
+.nav-button:active {
+    transform: scale(0.98);
 }
