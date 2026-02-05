@@ -20,11 +20,15 @@ body {
 }
 
 .logo {
-    max-width: 400px;
+    max-width: 360px;
 }
 
 .content {
     background-color: white;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 80vh;
     display: flex;
     flex-direction: column;
