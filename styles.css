@@ -7,35 +7,32 @@
 body {
     font-family: Arial, sans-serif;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.header {
-    background-color: rgb(236, 103, 7);
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo {
-    max-width: 360px;
-}
-
-.content {
-    background-color: white;
     background-image: url('background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh;
+}
+
+.container {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
     padding: 20px;
+}
+
+.logo {
+    max-width: 400px;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
 }
 
 .nav-button {
