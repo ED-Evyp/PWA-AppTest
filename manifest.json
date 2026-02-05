@@ -1,10 +1,10 @@
 {
   "name": "My First PWA",
   "short_name": "MyPWA",
-  "start_url": "/my-first-pwa/",
+  "start_url": "/PWA-AppTest/",
   "display": "standalone",
-  "background_color": "#ff8c00",
-  "theme_color": "#ff8c00",
+  "background_color": "#ec6707",
+  "theme_color": "#ec6707",
   "icons": [
     {
       "src": "logo.png",
