@@ -6,15 +6,16 @@
 
 body {
     font-family: Arial, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     background-image: url('background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: white;
 }
 
 .container {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,7 +24,8 @@ body {
 }
 
 .logo {
-    max-width: 400px;
+    max-width: 360px;
+    width: 100%;
     margin-bottom: 40px;
 }
 
