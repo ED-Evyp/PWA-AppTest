@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-pwa-v6';
+const CACHE_NAME = 'my-pwa-v7';
 const urlsToCache = [
   '/PWA-AppTest/',
   '/PWA-AppTest/index.html',
