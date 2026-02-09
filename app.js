@@ -7,6 +7,10 @@ if ('serviceWorker' in navigator) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const buttonsContainer = document.querySelector('.buttons');
+    const versionText = document.getElementById('version-text');
+
+    // Update version text to confirm JS is running
+    versionText.textContent = "Version: 2.0 (JS Loaded)";
 
     // Main menu buttons
     const mainButtons = [
