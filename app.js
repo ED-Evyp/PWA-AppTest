@@ -7,12 +7,14 @@ if ('serviceWorker' in navigator) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const buttonsContainer = document.querySelector('.buttons');
-    const imagesContainer = document.querySelector('.product-images');
+    const overlay = document.querySelector('.product-overlay');
+    const overlayText = document.querySelector('.product-text');
+    const overlayImage = document.querySelector('.product-image');
+    const backButton = document.querySelector('.back-button');
     const versionText = document.getElementById('version-text');
 
-    versionText.textContent = "Version: 3.0 (JS Loaded)";
+    versionText.textContent = "Version: 4.0 (JS Loaded)";
 
-    // Main menu buttons
     const mainButtons = [
         "Biostimulants",
         "Premium Biostimulants",
@@ -21,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "Insect Attractant"
     ];
 
-    // Biostimulants submenu
     const biostimulantsButtons = [
         "Amino 16",
         "Amino 16 B&Zn",
@@ -33,10 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "Back to main"
     ];
 
-    // Function to render buttons
     function renderButtons(buttons) {
-        imagesContainer.innerHTML = ''; // hide images when showing buttons
+        overlay.style.display = 'none'; // hide overlay
+        buttonsContainer.style.display = 'flex';
         buttonsContainer.innerHTML = '';
+
         buttons.forEach(text => {
             const btn = document.createElement('button');
             btn.className = 'nav-button';
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (text === "Back to main") {
                     renderButtons(mainButtons);
                 } else if (biostimulantsButtons.includes(text)) {
-                    showProductImages(text);
+                    showProductOverlay(text);
                 } else {
                     alert(`You clicked: ${text}`);
                 }
@@ -58,35 +60,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function to show product images
-    function showProductImages(productName) {
-        buttonsContainer.innerHTML = '';
-        imagesContainer.innerHTML = '';
+    async function showProductOverlay(productName) {
+        buttonsContainer.style.display = 'none';
+        overlay.style.display = 'flex';
 
-        // create top image
-        const topImg = document.createElement('img');
-        topImg.src = `Files/${productName} Top.png`;
-        topImg.alt = `${productName} Top`;
+        // Load text file from Files folder
+        try {
+            const response = await fetch(`Files/${productName}.txt`);
+            if (!response.ok) throw new Error('Text file not found');
+            const text = await response.text();
+            overlayText.textContent = text;
+        } catch (err) {
+            overlayText.textContent = "No description available.";
+            console.error(err);
+        }
 
-        // create bottom image
-        const bottomImg = document.createElement('img');
-        bottomImg.src = `Files/${productName} Bottom.png`;
-        bottomImg.alt = `${productName} Bottom`;
-
-        imagesContainer.appendChild(topImg);
-        imagesContainer.appendChild(bottomImg);
-
-        // add back button
-        const backBtn = document.createElement('button');
-        backBtn.className = 'nav-button';
-        backBtn.textContent = 'Back to products';
-        backBtn.style.marginTop = '20px';
-        backBtn.addEventListener('click', () => {
-            renderButtons(biostimulantsButtons);
-        });
-
-        imagesContainer.appendChild(backBtn);
+        // Load Bottom image
+        overlayImage.src = `Files/${productName} Bottom.png`;
+        overlayImage.alt = `${productName} Bottom`;
     }
+
+    backButton.addEventListener('click', () => {
+        renderButtons(biostimulantsButtons);
+    });
 
     // Initial render
     renderButtons(mainButtons);
