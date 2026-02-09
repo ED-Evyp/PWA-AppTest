@@ -18,7 +18,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
 }
@@ -26,7 +26,7 @@ body {
 .logo {
     max-width: 360px;
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .buttons {
@@ -44,7 +44,7 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     color: white;
-    background-color: rgba(236, 103, 7, 0.85); /* semi-opaque */
+    background-color: rgba(236, 103, 7, 0.85);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -66,7 +66,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* white semi-opaque */
+    background-color: rgba(255, 255, 255, 0.9);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -81,6 +81,7 @@ body {
     color: #333;
     text-align: center;
     margin-bottom: 20px;
+    white-space: pre-wrap; /* preserve line breaks from txt file */
 }
 
 .product-overlay img {
@@ -95,7 +96,7 @@ body {
     margin-top: 20px;
 }
 
-/* Responsive tweaks for small screens */
+/* Responsive tweaks */
 @media (max-height: 700px) {
     .nav-button {
         padding: 10px 25px;
