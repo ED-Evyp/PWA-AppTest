@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const backButton = document.querySelector('.back-button');
     const versionText = document.getElementById('version-text');
 
-    versionText.textContent = "Version: 4.0 (JS Loaded)";
+    versionText.textContent = "Version: 5.0 (JS Loaded)";
 
     const mainButtons = [
         "Biostimulants",
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function renderButtons(buttons) {
-        overlay.style.display = 'none'; // hide overlay
+        overlay.style.display = 'none';
         buttonsContainer.style.display = 'flex';
         buttonsContainer.innerHTML = '';
 
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`Files/${productName}.txt`);
             if (!response.ok) throw new Error('Text file not found');
             const text = await response.text();
-            overlayText.textContent = text;
+            overlayText.textContent = text; // now respects line breaks via CSS
         } catch (err) {
             overlayText.textContent = "No description available.";
             console.error(err);
