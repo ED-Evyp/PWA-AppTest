@@ -7,10 +7,10 @@ if ('serviceWorker' in navigator) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const buttonsContainer = document.querySelector('.buttons');
+    const imagesContainer = document.querySelector('.product-images');
     const versionText = document.getElementById('version-text');
 
-    // Update version text to confirm JS is running
-    versionText.textContent = "Version: 2.0 (JS Loaded)";
+    versionText.textContent = "Version: 3.0 (JS Loaded)";
 
     // Main menu buttons
     const mainButtons = [
@@ -35,18 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to render buttons
     function renderButtons(buttons) {
-        buttonsContainer.innerHTML = ''; // Clear existing buttons
+        imagesContainer.innerHTML = ''; // hide images when showing buttons
+        buttonsContainer.innerHTML = '';
         buttons.forEach(text => {
             const btn = document.createElement('button');
             btn.className = 'nav-button';
             btn.textContent = text;
 
-            // Click behavior
             btn.addEventListener('click', () => {
                 if (text === "Biostimulants") {
                     renderButtons(biostimulantsButtons);
                 } else if (text === "Back to main") {
                     renderButtons(mainButtons);
+                } else if (biostimulantsButtons.includes(text)) {
+                    showProductImages(text);
                 } else {
                     alert(`You clicked: ${text}`);
                 }
@@ -54,6 +56,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
             buttonsContainer.appendChild(btn);
         });
+    }
+
+    // Function to show product images
+    function showProductImages(productName) {
+        buttonsContainer.innerHTML = '';
+        imagesContainer.innerHTML = '';
+
+        // create top image
+        const topImg = document.createElement('img');
+        topImg.src = `Files/${productName} Top.png`;
+        topImg.alt = `${productName} Top`;
+
+        // create bottom image
+        const bottomImg = document.createElement('img');
+        bottomImg.src = `Files/${productName} Bottom.png`;
+        bottomImg.alt = `${productName} Bottom`;
+
+        imagesContainer.appendChild(topImg);
+        imagesContainer.appendChild(bottomImg);
+
+        // add back button
+        const backBtn = document.createElement('button');
+        backBtn.className = 'nav-button';
+        backBtn.textContent = 'Back to products';
+        backBtn.style.marginTop = '20px';
+        backBtn.addEventListener('click', () => {
+            renderButtons(biostimulantsButtons);
+        });
+
+        imagesContainer.appendChild(backBtn);
     }
 
     // Initial render
