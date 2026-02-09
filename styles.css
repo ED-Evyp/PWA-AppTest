@@ -40,29 +40,45 @@ body {
 .nav-button {
     width: 80%;
     max-width: 300px;
-    padding: 13px 30px; /* vertical padding reduced to 13px */
+    padding: 13px 30px;
     font-size: 1.1rem;
     font-weight: bold;
     color: white;
-    background-color: rgb(236, 103, 7);
+    background-color: rgba(236, 103, 7, 0.85); /* semi-opaque */
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .nav-button:hover {
-    background-color: rgb(206, 83, 0);
+    background-color: rgba(206, 83, 0, 0.85);
 }
 
 .nav-button:active {
     transform: scale(0.98);
 }
 
-/* Responsive tweak for small screens */
+/* Images for product view */
+.product-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.product-images img {
+    max-width: 360px;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Responsive tweaks for small screens */
 @media (max-height: 700px) {
     .nav-button {
-        padding: 10px 25px; /* slightly smaller on short screens */
+        padding: 10px 25px;
         font-size: 1rem;
     }
 
